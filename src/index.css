@@ -17,8 +17,10 @@
 
 body {
   margin: 0;
-  display: flex;
-  justify-content: center;
+  /* display: flex;
+  justify-content: center; */
+  display: grid;
+  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }

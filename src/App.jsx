@@ -12,6 +12,17 @@ function App() {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [turn, setTurn]   = useState(TURNS.X);
 
+    /* ----- Functions ----- */
+    const updateBoard = (index) => {
+        // siempre hay que tratar el estado y las props como elementos inmutables
+        const newBoard = [...board]; //esto crea una copia de *board* en un nuevo arreglo
+        newBoard[index] = turn;
+        setBoard(newBoard);
+
+        const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
+        setTurn(newTurn);
+    }
+
     return (
         <main className='board'>
             <h1>Tic Tac Toe</h1>
@@ -21,6 +32,7 @@ function App() {
                         <Square
                             key={index}
                             index={index}
+                            updateBoard={updateBoard}
                         >
                             {board[index]}
                         </Square>
