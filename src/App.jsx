@@ -7,8 +7,12 @@ import WinnerModal from "./components/WinnerModal";
 
 function App() {
     /* ----- State ----- */
-    const [board, setBoard]     = useState(Array(9).fill(null));
-    const [turn, setTurn]       = useState(TURNS.X);
+    const boardFromStorage = JSON.parse(window.localStorage.getItem('board')) ?? Array(9).fill(null);
+    const [board, setBoard]     = useState(boardFromStorage);
+
+    const turnFromStorage = window.localStorage.getItem('turn') ?? TURNS.X;
+    const [turn, setTurn]       = useState(turnFromStorage);
+
     const [winner, setWinner]   = useState(null); // null = no hay ganador, false = empate
 
     /* ----- Functions ----- */
@@ -24,6 +28,10 @@ function App() {
         const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
         setTurn(newTurn); // cambiar entre turnos ('x' u 'o')
 
+        // guardar partida en local storage
+        window.localStorage.setItem('board', JSON.stringify(newBoard));
+        window.localStorage.setItem('turn', newTurn);
+
         // revisar si ya existe un ganador
         const newWinner = checkWinner(newBoard);
         if (newWinner) {
@@ -38,11 +46,14 @@ function App() {
         setBoard(Array(9).fill(null));
         setTurn(TURNS.X);
         setWinner(null);
+
+        window.localStorage.removeItem('board');
+        window.localStorage.removeItem('turn');
     }
     
     return (
         <main className='board'>
-            <h1>Tic Tac Toe</h1>
+            <h1>Tres en raya</h1>
             <button onClick={resetGame}>Resetear el juego</button>
             <section className='game'>
                 {board.map((square, index) => {
