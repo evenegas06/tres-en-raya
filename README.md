@@ -8,6 +8,9 @@ A classic game built with React JS.
 
 This project is for practice and uses localStorage to save the latest game state.
 
+## Demo 
+https://eduardovr.com/tres-en-raya/
+
 
 <hr />
 
