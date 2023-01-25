@@ -1,6 +1,8 @@
 # Tic-Tac-Toe
 
-![](./public/project-img.png)
+<p align='center'>
+    <img src='./public/project-img.png'/>
+</p>
 
 A classic game built with React JS.
 
