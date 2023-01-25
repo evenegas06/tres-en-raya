@@ -1,7 +1,7 @@
 # Tic-Tac-Toe
 
 <p align='center'>
-    <img src='./public/project-img.png'/>
+    <img src='./public/project-img.png' width='205'/>
 </p>
 
 A classic game built with React JS.
